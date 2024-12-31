@@ -27,13 +27,50 @@ A Python script that automatically organizes files from your Downloads folder in
   ~/Videos
   ```
 
+## Installation
+
+### For Debian-based Systems (Ubuntu, etc.)
+
+1. Install pipx if you haven't already:
+   ```bash
+   sudo apt update
+   sudo apt install pipx
+   pipx ensurepath
+   ```
+
+2. Restart your terminal or run:
+   ```bash
+   source ~/.bashrc  # or source ~/.zshrc if you use zsh
+   ```
+
+3. Install the package:
+   ```bash
+   pipx install -e .
+   ```
+
+### For Other Systems
+
+Install directly using pip:
+```bash
+pip install -e .
+```
+
+Note: If you get an "externally-managed-environment" error on Debian-based systems, use the pipx installation method above instead.
+
 ## Usage
 
-1. Save the script to your computer
-2. Run the script using Python:
-   ```bash
-   python3 file_organizer.py
-   ```
+After installation, you can use the command `fileorganizer` from anywhere in your terminal:
+
+```bash
+# Basic usage - organize Downloads folder
+fileorganizer
+
+# See what would happen without making changes
+fileorganizer --dry-run
+
+# Organize a different directory
+fileorganizer --source "/path/to/directory"
+```
 
 ## Example
 
@@ -110,3 +147,27 @@ The script will:
 ## Contributing
 
 Feel free to fork this repository and submit pull requests for any improvements.
+
+## Development
+
+If you want to modify the code:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/fileorganizer.git
+   cd fileorganizer
+   ```
+
+2. Install in development mode:
+   ```bash
+   # For Debian-based systems
+   pipx install -e .
+   
+   # For other systems
+   pip install -e .
+   ```
+
+3. Make your changes and test them:
+   ```bash
+   fileorganizer --dry-run  # Test without making actual changes
+   ```

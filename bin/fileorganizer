@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+from fileorganizer.organizer import Organizer
+import argparse
+
+def main():
+    parser = argparse.ArgumentParser(description='Organize files in your Downloads folder')
+    parser.add_argument('--dry-run', action='store_true', help='Show what would be done without making changes')
+    parser.add_argument('--source', default=None, help='Specify a different source directory')
+    args = parser.parse_args()
+
+    org = Organizer()
+    if args.source:
+        org.download_path = args.source
+    
+    if args.dry_run:
+        org.dry_run = True
+    
+    org.move_files()
+
+if __name__ == "__main__":
+    main()
